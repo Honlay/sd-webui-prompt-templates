@@ -59,6 +59,20 @@ class TemplateScript(scripts.Script):
                 return item["negative_prompt"]
         return ""
 
+    def update_prompt_zh(self, selected_name):
+        """根据下拉菜单的选择更新文本框"""
+        for item in self.template_data:
+            if item["name"] == selected_name:
+                return item["prompt_zh"]
+        return ""
+
+    def update_negative_prompt_zh(self, selected_name):
+        """根据下拉菜单的选择更新文本框"""
+        for item in self.template_data:
+            if item["name"] == selected_name:
+                return item["negative_prompt_zh"]
+        return ""
+
     def show(self, is_img2img):
         """确定是否显示此扩展插件"""
         return scripts.AlwaysVisible
@@ -74,12 +88,21 @@ class TemplateScript(scripts.Script):
                 )
                 with gr.Row():
                     prompt_sent = gr.Textbox(label="正向提示词")
+                    prompt_zh = gr.Textbox(label="正向提示词翻译")
+                with gr.Row():
                     negative_prompt_send = gr.Textbox(label="反向提示词")
+                    negative_prompt_zh = gr.Textbox(label="反向提示词翻译")
 
                 send_text_button = gr.Button(value='发送到提示词框', variant='primary')
                 dropdown_to_text.change(fn=self.update_prompt, inputs=[dropdown_to_text], outputs=[prompt_sent])
                 dropdown_to_text.change(fn=self.update_negative_prompt, inputs=[dropdown_to_text],
                                         outputs=[negative_prompt_send])
+
+                dropdown_to_text.change(fn=self.update_prompt_zh, inputs=[dropdown_to_text],
+                                        outputs=[prompt_zh])
+
+                dropdown_to_text.change(fn=self.update_negative_prompt_zh, inputs=[dropdown_to_text],
+                                        outputs=[negative_prompt_zh])
 
         # 处理文本框和按钮交互
         with contextlib.suppress(AttributeError):
