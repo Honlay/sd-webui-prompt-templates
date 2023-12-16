@@ -1,14 +1,23 @@
 [
   {
     "name": "None",
-    "prompt": "{}"
+    "prompt": "{}",
+    "prompt_zh": "",
+    "negative_prompt": "",
+    "negative_prompt_zh": ""
   },
   {
     "name": "动物",
-    "prompt": "{}, wildlife photography, photograph, high quality, wildlife, f 1.8, soft focus, 8k, national geographic, award - winning photograph by nick nichols"
+    "prompt": "{}, wildlife photography, photograph, high quality, wildlife, f 1.8, soft focus, 8k, national geographic, award - winning photograph by nick nichols,",
+    "prompt_zh": "野生动物摄影, 照片, 高品质, 野生动物, f1.8, 软焦点, 8k, 国家地理, 尼克·尼科尔斯获奖照片",
+    "negative_prompt": "text,watermark,",
+    "negative_prompt_zh": "文字，水印"
   },
   {
     "name": "室内设计",
-    "prompt": "{}, by James McDonald and Joarc Architects, home, interior, octane render, deviantart, cinematic, key art, hyperrealism, sun light, sunrays, canon eos c 300, ƒ 1.8, 35 mm, 8k, medium - format print"
+    "prompt": "{}, by James McDonald and Joarc Architects, home, interior, octane render, deviantart, cinematic, key art, hyperrealism, sun light, sunrays, canon eos c 300, ƒ 1.8, 35 mm, 8k, medium - format print,",
+    "prompt_zh": "由 James McDonald 和 Joarc Architects 设计，家居、室内、Octane渲染、deviantart、电影、关键艺术、超现实主义、太阳光、阳光、佳能 eos c300、f1.8、35 毫米、8k、中画幅打印",
+    "negative_prompt": "text,watermark,",
+    "negative_prompt_zh": "文字，水印"
   }
 ]
