@@ -1,0 +1,14 @@
+[
+  {
+    "name": "None",
+    "prompt": "{}"
+  },
+  {
+    "name": "动物",
+    "prompt": "{}, wildlife photography, photograph, high quality, wildlife, f 1.8, soft focus, 8k, national geographic, award - winning photograph by nick nichols"
+  },
+  {
+    "name": "室内设计",
+    "prompt": "{}, by James McDonald and Joarc Architects, home, interior, octane render, deviantart, cinematic, key art, hyperrealism, sun light, sunrays, canon eos c 300, ƒ 1.8, 35 mm, 8k, medium - format print"
+  }
+]
