@@ -49,7 +49,7 @@ class TemplateScript(scripts.Script):
         self.neg_prompt_boxTXT = None
         self.boxxIMG = None
         self.boxx = None
-        self.template_data = self.load_template_data("SAI")
+        self.template_data = self.load_template_data("StabilityAI")
 
     def load_template_data(self, path):
         """从 JSON 文件加载模板数据"""
@@ -111,8 +111,9 @@ class TemplateScript(scripts.Script):
     def load_and_update_dropdown(self, selected_json):
         """根据选定的 JSON 文件名加载数据并更新下拉菜单选项"""
         self.template_data = self.load_template_data(selected_json)
-        new_options= [item["name"] for item in self.template_data]
+        new_options = [item["name"] for item in self.template_data]
         return gr.Dropdown.update(choices=new_options)
+
     def ui(self, is_img2img):
         """构建 UI 组件"""
         with gr.Accordion('提示词模板', open=False):
