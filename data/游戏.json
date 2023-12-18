@@ -1,0 +1,67 @@
+[
+  {
+    "name": "game-bubble bobble: 游戏-泡泡龙",
+    "prompt": "Bubble Bobble style {prompt} . 8-bit, cute, pixelated, fantasy, vibrant, reminiscent of Bubble Bobble game",
+    "negative_prompt": "realistic, modern, photorealistic, violent, horror"
+  },
+  {
+    "name": "game-cyberpunk game: 游戏-赛博朋克游戏",
+    "prompt": "cyberpunk game style {prompt} . neon, dystopian, futuristic, digital, vibrant, detailed, high contrast, reminiscent of cyberpunk genre video games",
+    "negative_prompt": "historical, natural, rustic, low detailed"
+  },
+  {
+    "name": "game-fighting game: 游戏-格斗游戏",
+    "prompt": "fighting game style {prompt} . dynamic, vibrant, action-packed, detailed character design, reminiscent of fighting video games",
+    "negative_prompt": "peaceful, calm, minimalist, photorealistic"
+  },
+  {
+    "name": "game-gta: 游戏-GTA",
+    "prompt": "GTA-style artwork {prompt} . satirical, exaggerated, pop art style, vibrant colors, iconic characters, action-packed",
+    "negative_prompt": "realistic, black and white, low contrast, impressionist, cubist, noisy, blurry, deformed"
+  },
+  {
+    "name": "game-mario: 游戏-马里奥",
+    "prompt": "Super Mario style {prompt} . vibrant, cute, cartoony, fantasy, playful, reminiscent of Super Mario series",
+    "negative_prompt": "realistic, modern, horror, dystopian, violent"
+  },
+  {
+    "name": "game-minecraft: 游戏-我的世界",
+    "prompt": "Minecraft style {prompt} . blocky, pixelated, vibrant colors, recognizable characters and objects, game assets",
+    "negative_prompt": "smooth, realistic, detailed, photorealistic, noise, blurry, deformed"
+  },
+  {
+    "name": "game-pokemon: 游戏-宝可梦",
+    "prompt": "Pokémon style {prompt} . vibrant, cute, anime, fantasy, reminiscent of Pokémon series",
+    "negative_prompt": "realistic, modern, horror, dystopian, violent"
+  },
+  {
+    "name": "game-retro arcade: 游戏-复古街机",
+    "prompt": "retro arcade style {prompt} . 8-bit, pixelated, vibrant, classic video game, old school gaming, reminiscent of 80s and 90s arcade games",
+    "negative_prompt": "modern, ultra-high resolution, photorealistic, 3D"
+  },
+  {
+    "name": "game-retro game: 游戏-复古游戏",
+    "prompt": "retro game art {prompt} . 16-bit, vibrant colors, pixelated, nostalgic, charming, fun",
+    "negative_prompt": "realistic, photorealistic, 35mm film, deformed, glitch, low contrast, noisy"
+  },
+  {
+    "name": "game-rpg fantasy game: 游戏-RPG幻想游戏",
+    "prompt": "role-playing game (RPG) style fantasy {prompt} . detailed, vibrant, immersive, reminiscent of high fantasy RPG games",
+    "negative_prompt": "sci-fi, modern, urban, futuristic, low detailed"
+  },
+  {
+    "name": "game-strategy game: 游戏-策略游戏",
+    "prompt": "strategy game style {prompt} . overhead view, detailed map, units, reminiscent of real-time strategy video games",
+    "negative_prompt": "first-person view, modern, photorealistic"
+  },
+  {
+    "name": "game-streetfighter: 游戏-街头霸王",
+    "prompt": "Street Fighter style {prompt} . vibrant, dynamic, arcade, 2D fighting game, highly detailed, reminiscent of Street Fighter series",
+    "negative_prompt": "3D, realistic, modern, photorealistic, turn-based strategy"
+  },
+  {
+    "name": "game-zelda: 游戏-塞尔达",
+    "prompt": "Legend of Zelda style {prompt} . vibrant, fantasy, detailed, epic, heroic, reminiscent of The Legend of Zelda series",
+    "negative_prompt": "sci-fi, modern, realistic, horror"
+  }
+]

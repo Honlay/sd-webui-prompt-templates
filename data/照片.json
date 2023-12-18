@@ -1,0 +1,37 @@
+[
+  {
+    "name": "photo-alien: 照片-外星人",
+    "prompt": "alien-themed {prompt} . extraterrestrial, cosmic, otherworldly, mysterious, sci-fi, highly detailed",
+    "negative_prompt": "earthly, mundane, common, realistic, simple"
+  },
+  {
+    "name": "photo-film noir: 照片-黑色电影",
+    "prompt": "film noir style {prompt} . monochrome, high contrast, dramatic shadows, 1940s style, mysterious, cinematic",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, realism, photorealistic, vibrant, colorful"
+  },
+  {
+    "name": "photo-hdr: 照片-HDR",
+    "prompt": "HDR photo of {prompt} . High dynamic range, vivid, rich details, clear shadows and highlights, realistic, intense, enhanced contrast, highly detailed",
+    "negative_prompt": "flat, low contrast, oversaturated, underexposed, overexposed, blurred, noisy"
+  },
+  {
+    "name": "photo-long exposure: 照片-长曝光",
+    "prompt": "long exposure photo of {prompt} . Blurred motion, streaks of light, surreal, dreamy, ghosting effect, highly detailed",
+    "negative_prompt": "static, noisy, deformed, shaky, abrupt, flat, low contrast"
+  },
+  {
+    "name": "hoto-neon noir: 照片-霓虹黑",
+    "prompt": "neon noir {prompt} . cyberpunk, dark, rainy streets, neon signs, high contrast, low light, vibrant, highly detailed",
+    "negative_prompt": "bright, sunny, daytime, low contrast, black and white, sketch, watercolor"
+  },
+  {
+    "name": "photo-silhouette: 照片-剪影",
+    "prompt": "silhouette style {prompt} . high contrast, minimalistic, black and white, stark, dramatic",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, color, realism, photorealistic"
+  },
+  {
+    "name": "photo-tilt-shift: 照片-倾斜转移",
+    "prompt": "tilt-shift photo of {prompt} . Selective focus, miniature effect, blurred background, highly detailed, vibrant, perspective control",
+    "negative_prompt": "blurry, noisy, deformed, flat, low contrast, unrealistic, oversaturated, underexposed"
+  }
+]

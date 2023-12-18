@@ -1,0 +1,107 @@
+[
+  {
+    "name": "misc-architectural: 杂项-建筑",
+    "prompt": "architectural style {prompt} . clean lines, geometric shapes, minimalist, modern, architectural drawing, highly detailed",
+    "negative_prompt": "curved lines, ornate, baroque, abstract, grunge"
+  },
+  {
+    "name": "misc-disco: 杂项-迪斯科",
+    "prompt": "disco-themed {prompt} . vibrant, groovy, retro 70s style, shiny disco balls, neon lights, dance floor, highly detailed",
+    "negative_prompt": "minimalist, rustic, monochrome, contemporary, simplistic"
+  },
+  {
+    "name": "misc-dreamscape: 杂项-梦境",
+    "prompt": "dreamscape {prompt} . surreal, ethereal, dreamy, mysterious, fantasy, highly detailed",
+    "negative_prompt": "realistic, concrete, ordinary, mundane"
+  },
+  {
+    "name": "misc-dystopian: 杂项-反乌托邦",
+    "prompt": "dystopian style {prompt} . bleak, post-apocalyptic, somber, dramatic, highly detailed",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, cheerful, optimistic, vibrant, colorful"
+  },
+  {
+    "name": "misc-fairy tale: 杂项-童话",
+    "prompt": "fairy tale {prompt} . magical, fantastical, enchanting, storybook style, highly detailed",
+    "negative_prompt": "realistic, modern, ordinary, mundane"
+  },
+  {
+    "name": "misc-gothic: 杂项-哥特式",
+    "prompt": "gothic style {prompt} . dark, mysterious, haunting, dramatic, ornate, detailed",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, realism, photorealistic, cheerful, optimistic"
+  },
+  {
+    "name": "misc-grunge: 杂项-垃圾摇滚",
+    "prompt": "grunge style {prompt} . textured, distressed, vintage, edgy, punk rock vibe, dirty, noisy",
+    "negative_prompt": "smooth, clean, minimalist, sleek, modern, photorealistic"
+  },
+  {
+    "name": "misc-horror: 杂项-恐怖",
+    "prompt": "horror-themed {prompt} . eerie, unsettling, dark, spooky, suspenseful, grim, highly detailed",
+    "negative_prompt": "cheerful, bright, vibrant, light-hearted, cute"
+  },
+  {
+    "name": "misc-kawaii: 杂项-可爱",
+    "prompt": "kawaii style {prompt} . cute, adorable, brightly colored, cheerful, anime influence, highly detailed",
+    "negative_prompt": "dark, scary, realistic, monochrome, abstract"
+  },
+  {
+    "name": "misc-lovecraftian: 杂项-洛夫克拉夫特式",
+    "prompt": "lovecraftian horror {prompt} . eldritch, cosmic horror, unknown, mysterious, surreal, highly detailed",
+    "negative_prompt": "light-hearted, mundane, familiar, simplistic, realistic"
+  },
+  {
+    "name": "misc-macabre: 杂项-恐怖的",
+    "prompt": "macabre style {prompt} . dark, gothic, grim, haunting, highly detailed",
+    "negative_prompt": "bright, cheerful, light-hearted, cartoonish, cute"
+  },
+  {
+    "name": "misc-manga: 杂项-漫画",
+    "prompt": "manga style {prompt} . vibrant, high-energy, detailed, iconic, Japanese comic style",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, realism, photorealistic, Western comic style"
+  },
+  {
+    "name": "misc-metropolis: 杂项-大都会",
+    "prompt": "metropolis-themed {prompt} . urban, cityscape, skyscrapers, modern, futuristic, highly detailed",
+    "negative_prompt": "rural, natural, rustic, historical, simple"
+  },
+  {
+    "name": "misc-minimalist: 杂项-极简主义",
+    "prompt": "minimalist style {prompt} . simple, clean, uncluttered, modern, elegant",
+    "negative_prompt": "ornate, complicated, highly detailed, cluttered, disordered, messy, noisy"
+  },
+  {
+    "name": "misc-monochrome: 杂项-单色",
+    "prompt": "monochrome {prompt} . black and white, contrast, tone, texture, detailed",
+    "negative_prompt": "colorful, vibrant, noisy, blurry, deformed"
+  },
+  {
+    "name": "misc-nautical: 杂项-航海",
+    "prompt": "nautical-themed {prompt} . sea, ocean, ships, maritime, beach, marine life, highly detailed",
+    "negative_prompt": "landlocked, desert, mountains, urban, rustic"
+  },
+  {
+    "name": "misc-space: 杂项-太空",
+    "prompt": "space-themed {prompt} . cosmic, celestial, stars, galaxies, nebulas, planets, science fiction, highly detailed",
+    "negative_prompt": "earthly, mundane, ground-based, realism"
+  },
+  {
+    "name": "misc-stained glass: 杂项-彩色玻璃",
+    "prompt": "stained glass style {prompt} . vibrant, beautiful, translucent, intricate, detailed",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, realism, photorealistic"
+  },
+  {
+    "name": "misc-techwear fashion: 杂项-科技服装时尚",
+    "prompt": "techwear fashion {prompt} . futuristic, cyberpunk, urban, tactical, sleek, dark, highly detailed",
+    "negative_prompt": "vintage, rural, colorful, low contrast, realism, sketch, watercolor"
+  },
+  {
+    "name": "misc-tribal: 杂项-部落",
+    "prompt": "tribal style {prompt} . indigenous, ethnic, traditional patterns, bold, natural colors, highly detailed",
+    "negative_prompt": "modern, futuristic, minimalist, pastel"
+  },
+  {
+    "name": "misc-zentangle: 杂项-禅绕画",
+    "prompt": "zentangle {prompt} . intricate, abstract, monochrome, patterns, meditative, highly detailed",
+    "negative_prompt": "colorful, representative, simplistic, large fields of color"
+  }
+]

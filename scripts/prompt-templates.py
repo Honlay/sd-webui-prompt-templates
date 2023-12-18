@@ -10,7 +10,7 @@ from googletrans import Translator
 current_script = os.path.realpath(__file__)
 current_folder = os.path.dirname(current_script)
 work_basedir = os.path.dirname(current_folder)  # 本插件的根目录
-temp_path = work_basedir + r"/json"  # JSON 文件的路径
+data_path = work_basedir + r"/data"
 # 初始化全局变量
 prompt_is_chinese = False
 negative_prompt_chinese = False
@@ -27,8 +27,18 @@ def send_text_to_negative_prompt(new_text):
     return original_negative_prompt
 
 
+# 获取指定目录下的所有 JSON 文件的文件名
+def get_json_filenames(directory):
+    return [f.rstrip('.json') for f in os.listdir(directory) if f.endswith('.json')]
+
+
+# 获取 JSON 文件名列表
+json_filenames = get_json_filenames(data_path)
+
+
 class TemplateScript(scripts.Script):
     """自定义脚本类，用于提供 Gradio 界面功能"""
+
     def title(self):
         """返回插件标题"""
         return "Prompt Template"
@@ -39,15 +49,14 @@ class TemplateScript(scripts.Script):
         self.neg_prompt_boxTXT = None
         self.boxxIMG = None
         self.boxx = None
-        self.template_data = self.load_template_data()
+        self.template_data = self.load_template_data("SAI")
 
-    def load_template_data(self):
+    def load_template_data(self, path):
         """从 JSON 文件加载模板数据"""
-        json_file_path = f'{temp_path}/Template.json'
+        json_file_path = f'{data_path}/{path}.json'
         if os.path.exists(json_file_path):
             with open(json_file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
-                print("Loaded data:", data)  # 打印加载的数据
                 return data
         return []
 
@@ -99,14 +108,19 @@ class TemplateScript(scripts.Script):
         """确定是否显示此扩展插件"""
         return scripts.AlwaysVisible
 
+    def load_and_update_dropdown(self, selected_json):
+        """根据选定的 JSON 文件名加载数据并更新下拉菜单选项"""
+        self.template_data = self.load_template_data(selected_json)
+        new_options= [item["name"] for item in self.template_data]
+        return gr.Dropdown.update(choices=new_options)
     def ui(self, is_img2img):
         """构建 UI 组件"""
         with gr.Accordion('提示词模板', open=False):
             with gr.Column():
+                radio = gr.Radio(json_filenames, label="选择模板类型")
                 dropdown_to_text = gr.Dropdown(
                     [item["name"] for item in self.template_data],
-                    label="选择模板",
-                    value=self.template_data[0]["name"] if self.template_data else "无选项"
+                    label="选择模板"
                 )
                 with gr.Row():
                     prompt_sent = gr.Textbox(label="正向提示词")
@@ -123,8 +137,9 @@ class TemplateScript(scripts.Script):
                                         outputs=[negative_prompt_send])
 
                 prompt_tr_button.click(fn=self.prompt_translate_chinese, inputs=[prompt_sent], outputs=[prompt_sent])
-                negative_prompt_tr_button.click(fn=self.negative_prompt_translate_chinese, inputs=[negative_prompt_send], outputs=[negative_prompt_send])
-
+                negative_prompt_tr_button.click(fn=self.negative_prompt_translate_chinese,
+                                                inputs=[negative_prompt_send], outputs=[negative_prompt_send])
+                radio.change(fn=self.load_and_update_dropdown, inputs=[radio], outputs=[dropdown_to_text])
         # 处理文本框和按钮交互
         with contextlib.suppress(AttributeError):
             if is_img2img:

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "ads-advertising: 广告",
+    "prompt": "Advertising poster style {prompt} . Professional, modern, product-focused, commercial, eye-catching, highly detailed",
+    "negative_prompt": "noisy, blurry, amateurish, sloppy, unattractive"
+  },
+  {
+    "name": "ads-automotive:广告-汽车",
+    "prompt": "Automotive advertisement style {prompt} . Sleek, dynamic, professional, commercial, vehicle-focused, high-resolution, highly detailed",
+    "negative_prompt": "noisy, blurry, unattractive, sloppy, unprofessional"
+  },
+  {
+    "name": "ads-corporate:广告-企业",
+    "prompt": "Corporate branding style {prompt} . Professional, clean, modern, sleek, minimalist, business-oriented, highly detailed",
+    "negative_prompt": "noisy, blurry, grungy, sloppy, cluttered, disorganized"
+  },
+  {
+    "name": "ads-fashion editorial:广告-时尚社论",
+    "prompt": "Fashion editorial style {prompt} . High fashion, trendy, stylish, editorial, magazine style, professional, highly detailed",
+    "negative_prompt": "outdated, blurry, noisy, unattractive, sloppy"
+  },
+  {
+    "name": "ads-food photography:广告-食品摄影",
+    "prompt": "Food photography style {prompt} . Appetizing, professional, culinary, high-resolution, commercial, highly detailed",
+    "negative_prompt": "unappetizing, sloppy, unprofessional, noisy, blurry"
+  },
+  {
+    "name": "ads-luxury:广告-奢侈品",
+    "prompt": "Luxury product style {prompt} . Elegant, sophisticated, high-end, luxurious, professional, highly detailed",
+    "negative_prompt": "cheap, noisy, blurry, unattractive, amateurish"
+  },
+  {
+    "name": "ads-real estate:广告-房地产",
+    "prompt": "Real estate photography style {prompt} . Professional, inviting, well-lit, high-resolution, property-focused, commercial, highly detailed",
+    "negative_prompt": "dark, blurry, unappealing, noisy, unprofessional"
+  },
+  {
+    "name": "ads-retail:广告-零售",
+    "prompt": "Retail packaging style {prompt} . Vibrant, enticing, commercial, product-focused, eye-catching, professional, highly detailed",
+    "negative_prompt": "noisy, blurry, amateurish, sloppy, unattractive"
+  }
+]

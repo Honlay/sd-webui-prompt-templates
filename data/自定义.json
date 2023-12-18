@@ -1,0 +1,47 @@
+[
+  {
+    "name": "自定义-写实动物",
+    "prompt": "{prompt}, wildlife photography, photograph, high quality, wildlife, f 1.8, soft focus, 8k, national geographic, award - winning photograph by nick nichols",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast"
+  },
+  {
+    "name": "自定义-室内渲染",
+    "prompt": "{prompt}, by James McDonald and Joarc Architects, home, interior, octane render, deviantart, cinematic, key art, hyperrealism, sun light, sunrays, canon eos c 300, ƒ 1.8, 35 mm, 8k, medium - format print",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast"
+  },
+  {
+    "name": "自定义-建筑渲染",
+    "prompt": "{prompt}, shot 35 mm, realism, octane render, 8k, trending on artstation, 35 mm camera, unreal engine, hyper detailed, photo - realistic maximum detail, volumetric light, realistic matte painting, hyper photorealistic, trending on artstation, ultra - detailed, realistic",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast"
+  },
+  {
+    "name": "自定义-卡通角色",
+    "prompt": "{prompt}, anthro, very cute kid's film character, disney pixar zootopia character concept artwork, 3d concept, detailed fur, high detail iconic character for upcoming film, trending on artstation, character design, 3d artistic render, highly detailed, octane, blender, cartoon, shadows, lighting",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast"
+  },
+  {
+    "name": "自定义-角色设计",
+    "prompt": "{prompt}, character sheet, concept design, contrast, style by kim jung gi, zabrocki, karlkka, jayison devadas, trending on artstation, 8k, ultra wide angle, pincushion lens effect",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast"
+  },
+  {
+    "name": "自定义-照片特写",
+    "prompt": "{prompt}, depth of field, bokeh, soft light, by Yasmin Albatoul, Harry Fayt, centered, extremely detailed, Nikon D850, (35mm|50mm|85mm), award winning photography",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast"
+  },
+  {
+    "name": "自定义-肖像照片",
+    "prompt": "portrait photo of {prompt}, photograph, highly detailed face, depth of field, moody light, golden hour, style by Dan Winters, Russell James, Steve McCurry, centered, extremely detailed, Nikon D850, award winning photography",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast"
+  },
+  {
+    "name": "自定义-示意图",
+    "prompt": "23rd century scientific schematics for {prompt}, blueprint, hyperdetailed vector technical documents, callouts, legend, patent registry",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast"
+  },
+  {
+    "name": "自定义-汽车",
+    "prompt": "cinematic photo of {prompt}, modern car, red color, perfectly centered, telephoto lens, bokeh, extremely detailed car, extremely detailed background, reflections, raw photo, photorealism, 35mm photograph, film, professional, 4k, highly detailed",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast"
+  }
+]

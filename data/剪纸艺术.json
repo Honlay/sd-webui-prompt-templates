@@ -1,0 +1,47 @@
+[
+  {
+    "name": "papercraft-collage: 纸艺-拼贴",
+    "prompt": "collage style {prompt} . mixed media, layered, textural, detailed, artistic",
+    "negative_prompt": "ugly, deformed, noisy, blurry, low contrast, realism, photorealistic"
+  },
+  {
+    "name": "papercraft-flat papercut: 纸艺-平面剪纸",
+    "prompt": "flat papercut style {prompt} . silhouette, clean cuts, paper, sharp edges, minimalist, color block",
+    "negative_prompt": "3D, high detail, noise, grainy, blurry, painting, drawing, photo, disfigured"
+  },
+  {
+    "name": "papercraft-kirigami: 纸艺-切纸",
+    "prompt": "kirigami representation of {prompt} . 3D, paper folding, paper cutting, Japanese, intricate, symmetrical, precision, clean lines",
+    "negative_prompt": "painting, drawing, 2D, noisy, blurry, deformed"
+  },
+  {
+    "name": "papercraft-paper mache: 纸艺-纸浆雕塑",
+    "prompt": "paper mache representation of {prompt} . 3D, sculptural, textured, handmade, vibrant, fun",
+    "negative_prompt": "2D, flat, photo, sketch, digital art, deformed, noisy, blurry"
+  },
+  {
+    "name": "papercraft-paper quilling: 纸艺-纸卷",
+    "prompt": "paper quilling art of {prompt} . intricate, delicate, curling, rolling, shaping, coiling, loops, 3D, dimensional, ornamental",
+    "negative_prompt": "photo, painting, drawing, 2D, flat, deformed, noisy, blurry"
+  },
+  {
+    "name": "papercraft-papercut collage: 纸艺-剪纸拼贴",
+    "prompt": "papercut collage of {prompt} . mixed media, textured paper, overlapping, asymmetrical, abstract, vibrant",
+    "negative_prompt": "photo, 3D, realistic, drawing, painting, high detail, disfigured"
+  },
+  {
+    "name": "papercraft-papercut shadow box: 纸艺-剪纸阴影盒",
+    "prompt": "3D papercut shadow box of {prompt} . layered, dimensional, depth, silhouette, shadow, papercut, handmade, high contrast",
+    "negative_prompt": "painting, drawing, photo, 2D, flat, high detail, blurry, noisy, disfigured"
+  },
+  {
+    "name": "papercraft-stacked papercut: 纸艺-堆叠剪纸",
+    "prompt": "stacked papercut art of {prompt} . 3D, layered, dimensional, depth, precision cut, stacked layers, papercut, high contrast",
+    "negative_prompt": "2D, flat, noisy, blurry, painting, drawing, photo, deformed"
+  },
+  {
+    "name": "papercraft-thick layered papercut: 纸艺-厚层剪纸",
+    "prompt": "thick layered papercut art of {prompt} . deep 3D, volumetric, dimensional, depth, thick paper, high stack, heavy texture, tangible layers",
+    "negative_prompt": "2D, flat, thin paper, low stack, smooth texture, painting, drawing, photo, deformed"
+  }
+]
