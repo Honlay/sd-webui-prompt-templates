@@ -5,12 +5,14 @@ import gradio as gr
 import modules.scripts as scripts
 from modules.processing import process_images
 from googletrans import Translator
+import random
 
 # 获取当前脚本的路径信息
 current_script = os.path.realpath(__file__)
 current_folder = os.path.dirname(current_script)
 work_basedir = os.path.dirname(current_folder)  # 本插件的根目录
-data_path = work_basedir + r"/data"
+data_path = work_basedir + r"/data/styles/"
+random_path = work_basedir + r"/data/random/random.json"
 # 初始化全局变量
 prompt_is_chinese = False
 negative_prompt_chinese = False
@@ -50,6 +52,7 @@ class TemplateScript(scripts.Script):
         self.boxxIMG = None
         self.boxx = None
         self.template_data = self.load_template_data("StabilityAI")
+        self.random_data = self.load_random_data()
 
     def load_template_data(self, path):
         """从 JSON 文件加载模板数据"""
@@ -59,6 +62,22 @@ class TemplateScript(scripts.Script):
                 data = json.load(file)
                 return data
         return []
+
+    def load_random_data(self):
+        """从json文件加载随机数据"""
+        if os.path.exists(random_path):
+            with open(random_path, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+                return data
+        return []
+
+    def select_random_prompt(self):
+        if self.random_data:
+            random_entry = random.choice(self.random_data)
+            global original_prompt
+            original_prompt = random_entry["prompt"]
+            return random_entry['translation']
+        return ""
 
     def update_prompt(self, selected_name):
         """根据下拉菜单的选择更新文本框"""
@@ -119,10 +138,14 @@ class TemplateScript(scripts.Script):
         with gr.Accordion('提示词模板', open=False):
             with gr.Column():
                 radio = gr.Radio(json_filenames, label="选择模板类型")
-                dropdown_to_text = gr.Dropdown(
-                    [item["name"] for item in self.template_data],
-                    label="选择模板"
-                )
+
+                with gr.Row():
+                    dropdown_to_text = gr.Dropdown(
+                        [item["name"] for item in self.template_data],
+                        label="选择模板"
+                    )
+                    random_button = gr.Button(value="🎲️", elem_classes="lg secondary gradio-button tool svelte-cmf5ev",
+                                              elem_id="txt2img_random_seed")
                 with gr.Row():
                     prompt_sent = gr.Textbox(label="正向提示词")
                     prompt_tr_button = gr.Button(value="译", size="sm",
@@ -141,6 +164,8 @@ class TemplateScript(scripts.Script):
                 negative_prompt_tr_button.click(fn=self.negative_prompt_translate_chinese,
                                                 inputs=[negative_prompt_send], outputs=[negative_prompt_send])
                 radio.change(fn=self.load_and_update_dropdown, inputs=[radio], outputs=[dropdown_to_text])
+
+                random_button.click(fn=self.select_random_prompt, outputs=[prompt_sent])
         # 处理文本框和按钮交互
         with contextlib.suppress(AttributeError):
             if is_img2img:
