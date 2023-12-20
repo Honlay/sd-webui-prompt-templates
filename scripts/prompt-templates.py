@@ -97,7 +97,7 @@ class TemplateScript(scripts.Script):
         self.neg_prompt_boxTXT = None
         self.boxxIMG = None
         self.boxx = None
-        self.template_data = load_template_data("StabilityAI")
+        self.template_data = load_template_data(json_filenames[0])
         self.random_data = load_random_data()
 
     def show(self, is_img2img):
@@ -114,7 +114,7 @@ class TemplateScript(scripts.Script):
             with gr.Accordion('提示词模板 V1.1.0', open=False):
                 gr.HTML('<a href="https://github.com/Honlay/sd-webui-prompt-templates">[使用说明]')
                 with gr.Column():
-                    radio = gr.Radio(json_filenames, label="选择模板类型")
+                    radio = gr.Radio(json_filenames, label="选择模板类型", value=json_filenames[0])
 
                     with gr.Row():
                         dropdown_to_text = gr.Dropdown(
