@@ -113,47 +113,65 @@ class TemplateScript(scripts.Script):
         with gr.Row(elem_id=eid):
             with gr.Accordion('提示词模板 V1.1.0', open=False):
                 gr.HTML('<a href="https://github.com/Honlay/sd-webui-prompt-templates">[使用说明]')
-                with gr.Column():
-                    radio = gr.Radio(json_filenames, label="选择模板类型", value=json_filenames[0])
+                with gr.Row():
+                    with gr.Column(scale=3, elem_classes="block gradio-accordion svelte-90oupt padded"):
+                        radio = gr.Radio(json_filenames, label="选择模板类型", value=json_filenames[0])
 
-                    with gr.Row():
-                        dropdown_to_text = gr.Dropdown(
-                            [item["name"] for item in self.template_data],
-                            label="选择模板"
-                        )
-                        random_button = gr.Button(value="🎲️",
-                                                  elem_classes="lg secondary gradio-button tool svelte-cmf5ev",
-                                                  elem_id="txt2img_random_seed")
-                    with gr.Row():
-                        prompt_sent = gr.Textbox(label="正向提示词")
-                        prompt_tr_button = gr.Button(value="🌐", size="sm",
-                                                     elem_classes="lg secondary gradio-button tool svelte-cmf5ev")
-                        prompt_clear_button = gr.Button(value="🗑️", size="sm",
-                                                        elem_classes="lg secondary gradio-button tool svelte-cmf5ev")
-                    with gr.Row():
-                        negative_prompt_send = gr.Textbox(label="反向提示词")
-                        negative_prompt_tr_button = gr.Button(value="🌐", size="sm",
-                                                              elem_classes="lg secondary gradio-button tool "
-                                                                           "svelte-cmf5ev")
-                        negative_prompt_clear_button = gr.Button(value="🗑️", size="sm",
-                                                                 elem_classes="lg secondary gradio-button tool "
-                                                                              "svelte-cmf5ev")
+                        with gr.Row():
+                            dropdown_to_text = gr.Dropdown(
+                                [item["name"] for item in self.template_data],
+                                label="选择模板"
+                            )
+                            random_button = gr.Button(value="🎲️",
+                                                      elem_classes="lg secondary gradio-button tool svelte-cmf5ev",
+                                                      elem_id="txt2img_random_seed")
+                        with gr.Row():
+                            prompt_sent = gr.Textbox(label="正向提示词")
+                            prompt_tr_button = gr.Button(value="🌐", size="sm",
+                                                         elem_classes="lg secondary gradio-button tool svelte-cmf5ev")
+                            prompt_clear_button = gr.Button(value="🗑️", size="sm",
+                                                            elem_classes="lg secondary gradio-button tool svelte-cmf5ev")
+                        with gr.Row():
+                            negative_prompt_send = gr.Textbox(label="反向提示词")
+                            negative_prompt_tr_button = gr.Button(value="🌐", size="sm",
+                                                                  elem_classes="lg secondary gradio-button tool "
+                                                                               "svelte-cmf5ev")
+                            negative_prompt_clear_button = gr.Button(value="🗑️", size="sm",
+                                                                     elem_classes="lg secondary gradio-button tool "
+                                                                                  "svelte-cmf5ev")
 
-                    send_text_button = gr.Button(value='发送到提示词框', variant='primary')
-                    dropdown_to_text.change(fn=self.update_prompt, inputs=[dropdown_to_text], outputs=[prompt_sent])
-                    dropdown_to_text.change(fn=self.update_negative_prompt, inputs=[dropdown_to_text],
-                                            outputs=[negative_prompt_send])
+                        send_text_button = gr.Button(value='发送到提示词框', variant='primary')
+                        dropdown_to_text.change(fn=self.update_prompt, inputs=[dropdown_to_text], outputs=[prompt_sent])
+                        dropdown_to_text.change(fn=self.update_negative_prompt, inputs=[dropdown_to_text],
+                                                outputs=[negative_prompt_send])
 
-                    prompt_tr_button.click(fn=prompt_translate_chinese, inputs=[prompt_sent],
-                                           outputs=[prompt_sent])
-                    negative_prompt_tr_button.click(fn=negative_prompt_translate_chinese,
-                                                    inputs=[negative_prompt_send], outputs=[negative_prompt_send])
-                    radio.change(fn=self.load_and_update_dropdown, inputs=[radio], outputs=[dropdown_to_text])
+                        prompt_tr_button.click(fn=prompt_translate_chinese, inputs=[prompt_sent],
+                                               outputs=[prompt_sent])
+                        negative_prompt_tr_button.click(fn=negative_prompt_translate_chinese,
+                                                        inputs=[negative_prompt_send], outputs=[negative_prompt_send])
+                        radio.change(fn=self.load_and_update_dropdown, inputs=[radio], outputs=[dropdown_to_text])
 
-                    random_button.click(fn=self.select_random_prompt, outputs=[prompt_sent])
+                        random_button.click(fn=self.select_random_prompt, outputs=[prompt_sent])
 
-                    prompt_clear_button.click(fn=clear_prompt, outputs=[prompt_sent])
-                    negative_prompt_clear_button.click(fn=clear_prompt, outputs=[negative_prompt_send])
+                        prompt_clear_button.click(fn=clear_prompt, outputs=[prompt_sent])
+                        negative_prompt_clear_button.click(fn=clear_prompt, outputs=[negative_prompt_send])
+                    with gr.Column(scale=2,elem_classes="block gradio-accordion svelte-90oupt padded"):
+                        gr.Markdown("""
+                                        ### 提示词写作技巧
+                                        #### 符号解析
+                                        - ()小括号: 加权 每套一层括号增加1.1倍，red=1 (red)=1.1 (((red)))=1.331
+                                        - {}大括号: 加权 每套一层括号增加1.05倍，red=1 {red}=1.05 {{{red}}}=1.15
+                                        - []中括号: 降权 每套一层括号增加0.9倍，red=1 [red]=0.9 [[[red]]]=0.729
+                                        - _下划线：起到连接的作用，如要生成咖啡蛋糕，则写为:coffee_cake
+                                        - 通常使用小括号和数字直接设置权重(red:1.5),范围建议设置在0.3-1.5之间
+                                        #### 进阶语法
+                                        - [提示词:0-1数值]表示整体画面采样达到数值之后才计算其采样
+                                        - [提示词::0-1数值]表示整体画面采样达到数值之后不再计算其采样
+                                        - [提示词1:提示词2:0-1数值]表示整体画面达到数值之后提示词1不再采样,提示词2开始采样
+                                        - [提示词1|提示词2]交替采样
+                                        #### 推荐格式:画质、画风词+画面主体描述+环境、场景、灯光、构图+Lora
+                                        """,
+                                    )
         # 处理文本框和按钮交互
         with contextlib.suppress(AttributeError):
             if is_img2img:
