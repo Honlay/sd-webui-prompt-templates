@@ -3,7 +3,6 @@ import os
 import json
 import gradio as gr
 import modules.scripts as scripts
-from modules.processing import process_images
 from googletrans import Translator
 import random
 
@@ -47,6 +46,7 @@ class TemplateScript(scripts.Script):
 
     def __init__(self):
         """初始化函数，加载模板数据"""
+        self.txtprompt = None
         self.neg_prompt_boxIMG = None
         self.neg_prompt_boxTXT = None
         self.boxxIMG = None
@@ -134,38 +134,43 @@ class TemplateScript(scripts.Script):
         return gr.Dropdown.update(choices=new_options)
 
     def ui(self, is_img2img):
+        if is_img2img:
+            eid = 'lei-img-prompt'
+        else:
+            eid = 'lei-txt-prompt'
         """构建 UI 组件"""
-        with gr.Accordion('提示词模板', open=False):
-            with gr.Column():
-                radio = gr.Radio(json_filenames, label="选择模板类型")
+        with gr.Row(elem_id=eid):
+            with gr.Accordion('Prompt Template V1.1.0', open=False):
+                with gr.Column():
+                    radio = gr.Radio(json_filenames, label="选择模板类型")
 
-                with gr.Row():
-                    dropdown_to_text = gr.Dropdown(
-                        [item["name"] for item in self.template_data],
-                        label="选择模板"
-                    )
-                    random_button = gr.Button(value="🎲️", elem_classes="lg secondary gradio-button tool svelte-cmf5ev",
-                                              elem_id="txt2img_random_seed")
-                with gr.Row():
-                    prompt_sent = gr.Textbox(label="正向提示词")
-                    prompt_tr_button = gr.Button(value="译", size="sm",
-                                                 elem_classes="lg secondary gradio-button tool svelte-cmf5ev")
-                with gr.Row():
-                    negative_prompt_send = gr.Textbox(label="反向提示词")
-                    negative_prompt_tr_button = gr.Button(value="译", size="sm",
-                                                          elem_classes="lg secondary gradio-button tool svelte-cmf5ev")
+                    with gr.Row():
+                        dropdown_to_text = gr.Dropdown(
+                            [item["name"] for item in self.template_data],
+                            label="选择模板"
+                        )
+                        random_button = gr.Button(value="🎲️", elem_classes="lg secondary gradio-button tool svelte-cmf5ev",
+                                                  elem_id="txt2img_random_seed")
+                    with gr.Row():
+                        prompt_sent = gr.Textbox(label="正向提示词")
+                        prompt_tr_button = gr.Button(value="译", size="sm",
+                                                     elem_classes="lg secondary gradio-button tool svelte-cmf5ev")
+                    with gr.Row():
+                        negative_prompt_send = gr.Textbox(label="反向提示词")
+                        negative_prompt_tr_button = gr.Button(value="译", size="sm",
+                                                              elem_classes="lg secondary gradio-button tool svelte-cmf5ev")
 
-                send_text_button = gr.Button(value='发送到提示词框', variant='primary')
-                dropdown_to_text.change(fn=self.update_prompt, inputs=[dropdown_to_text], outputs=[prompt_sent])
-                dropdown_to_text.change(fn=self.update_negative_prompt, inputs=[dropdown_to_text],
-                                        outputs=[negative_prompt_send])
+                    send_text_button = gr.Button(value='发送到提示词框', variant='primary')
+                    dropdown_to_text.change(fn=self.update_prompt, inputs=[dropdown_to_text], outputs=[prompt_sent])
+                    dropdown_to_text.change(fn=self.update_negative_prompt, inputs=[dropdown_to_text],
+                                            outputs=[negative_prompt_send])
 
-                prompt_tr_button.click(fn=self.prompt_translate_chinese, inputs=[prompt_sent], outputs=[prompt_sent])
-                negative_prompt_tr_button.click(fn=self.negative_prompt_translate_chinese,
-                                                inputs=[negative_prompt_send], outputs=[negative_prompt_send])
-                radio.change(fn=self.load_and_update_dropdown, inputs=[radio], outputs=[dropdown_to_text])
+                    prompt_tr_button.click(fn=self.prompt_translate_chinese, inputs=[prompt_sent], outputs=[prompt_sent])
+                    negative_prompt_tr_button.click(fn=self.negative_prompt_translate_chinese,
+                                                    inputs=[negative_prompt_send], outputs=[negative_prompt_send])
+                    radio.change(fn=self.load_and_update_dropdown, inputs=[radio], outputs=[dropdown_to_text])
 
-                random_button.click(fn=self.select_random_prompt, outputs=[prompt_sent])
+                    random_button.click(fn=self.select_random_prompt, outputs=[prompt_sent])
         # 处理文本框和按钮交互
         with contextlib.suppress(AttributeError):
             if is_img2img:
@@ -184,6 +189,9 @@ class TemplateScript(scripts.Script):
 
     def after_component(self, component, **kwargs):
         """处理组件事件后的回调函数"""
+        if component.elem_id == "txt2img_prompt" or component.elem_id == "img2img_prompt":
+            self.txtprompt = component
+            
         if kwargs.get("elem_id") == "txt2img_prompt":
             self.boxx = component
         if kwargs.get("elem_id") == "img2img_prompt":
