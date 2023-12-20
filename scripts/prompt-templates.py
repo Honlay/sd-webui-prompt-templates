@@ -17,14 +17,17 @@ prompt_is_chinese = False
 negative_prompt_chinese = False
 original_prompt = ""
 original_negative_prompt = ""
+is_only_send_prompt = False
 
 
 def send_text_to_prompt(old_text):
     return original_prompt.replace("{prompt}", old_text)
 
 
-def send_text_to_negative_prompt():
-    return original_negative_prompt
+def send_text_to_negative_prompt(old_text):
+    if not is_only_send_prompt:
+        return original_negative_prompt
+    return old_text
 
 
 # 获取指定目录下的所有 JSON 文件的文件名
@@ -83,6 +86,12 @@ def clear_prompt():
     return ""
 
 
+def update_only_send_prompt(checkbox_value):
+    global is_only_send_prompt
+    is_only_send_prompt = checkbox_value
+    return checkbox_value  # 这一行通常不是必需的，除非你需要返回值来更新UI
+
+
 class TemplateScript(scripts.Script):
     """自定义脚本类，用于提供 Gradio 界面功能"""
 
@@ -139,8 +148,10 @@ class TemplateScript(scripts.Script):
                             negative_prompt_clear_button = gr.Button(value="🗑️", size="sm",
                                                                      elem_classes="lg secondary gradio-button tool "
                                                                                   "svelte-cmf5ev")
+                        with gr.Row():
+                            negative_prompt_checkbox = gr.Checkbox(label="只发送正向提示词", scale=1)
+                            send_text_button = gr.Button(value='发送到提示词框', variant='primary', scale=5)
 
-                        send_text_button = gr.Button(value='发送到提示词框', variant='primary')
                         dropdown_to_text.change(fn=self.update_prompt, inputs=[dropdown_to_text], outputs=[prompt_sent])
                         dropdown_to_text.change(fn=self.update_negative_prompt, inputs=[dropdown_to_text],
                                                 outputs=[negative_prompt_send])
@@ -155,6 +166,9 @@ class TemplateScript(scripts.Script):
 
                         prompt_clear_button.click(fn=clear_prompt, outputs=[prompt_sent])
                         negative_prompt_clear_button.click(fn=clear_prompt, outputs=[negative_prompt_send])
+                        negative_prompt_checkbox.change(fn=update_only_send_prompt, inputs=[negative_prompt_checkbox],
+                                                        outputs=[])
+
                     with gr.Column(scale=2, elem_classes="block gradio-accordion svelte-90oupt padded"):
                         gr.Markdown("""
                                         ### 提示词写作技巧
@@ -176,10 +190,12 @@ class TemplateScript(scripts.Script):
         with contextlib.suppress(AttributeError):
             if is_img2img:
                 send_text_button.click(fn=send_text_to_prompt, inputs=[self.boxxIMG], outputs=[self.boxxIMG])
-                send_text_button.click(fn=send_text_to_negative_prompt, outputs=[self.neg_prompt_boxIMG])
+                send_text_button.click(fn=send_text_to_negative_prompt, inputs=[self.neg_prompt_boxIMG],
+                                       outputs=[self.neg_prompt_boxIMG])
             else:
                 send_text_button.click(fn=send_text_to_prompt, inputs=[self.boxx], outputs=[self.boxx])
-                send_text_button.click(fn=send_text_to_negative_prompt, outputs=[self.neg_prompt_boxTXT])
+                send_text_button.click(fn=send_text_to_negative_prompt, inputs=[self.neg_prompt_boxTXT],
+                                       outputs=[self.neg_prompt_boxTXT])
 
         return [prompt_sent, dropdown_to_text, send_text_button]
 
