@@ -151,11 +151,11 @@ class TemplateScript(scripts.Script):
                                                         inputs=[negative_prompt_send], outputs=[negative_prompt_send])
                         radio.change(fn=self.load_and_update_dropdown, inputs=[radio], outputs=[dropdown_to_text])
 
-                        random_button.click(fn=self.select_random_prompt, outputs=[prompt_sent])
+                        random_button.click(fn=self.select_random_prompt, outputs=[prompt_sent, negative_prompt_send])
 
                         prompt_clear_button.click(fn=clear_prompt, outputs=[prompt_sent])
                         negative_prompt_clear_button.click(fn=clear_prompt, outputs=[negative_prompt_send])
-                    with gr.Column(scale=2,elem_classes="block gradio-accordion svelte-90oupt padded"):
+                    with gr.Column(scale=2, elem_classes="block gradio-accordion svelte-90oupt padded"):
                         gr.Markdown("""
                                         ### 提示词写作技巧
                                         #### 符号解析
@@ -202,8 +202,10 @@ class TemplateScript(scripts.Script):
             random_entry = random.choice(self.random_data)
             global original_prompt
             original_prompt = random_entry["prompt"]
-            return random_entry['translation']
-        return ""
+            global original_negative_prompt
+            original_negative_prompt = random_entry["negative_prompt"]
+            return [random_entry['prompt_zh'], random_entry['negative_prompt_zh']]
+        return []
 
     def update_prompt(self, selected_name):
         """根据下拉菜单的选择更新文本框"""
